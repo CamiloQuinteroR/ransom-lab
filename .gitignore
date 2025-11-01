@@ -1,7 +1,3 @@
-# Ignora entornos virtuales de Python
-.venv/
-venv/
-
 
 # Archivos temporales y de sistema
 __pycache__/
