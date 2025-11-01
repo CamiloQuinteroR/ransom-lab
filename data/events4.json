@@ -1,0 +1,82 @@
+[
+    {
+        "command": "whoami",
+        "plaintext_command": "whoami",
+        "delegated_timestamp": "2025-10-31T10:00:00Z",
+        "collected_timestamp": "2025-10-31T10:00:10Z",
+        "finished_timestamp": "2025-10-31T10:00:15Z",
+        "status": 0,
+        "platform": "linux",
+        "executor": "sh",
+        "pid": 12345,
+        "agent_metadata": {
+            "paw": "abc123",
+            "group": "blue",
+            "architecture": "x86_64",
+            "username": "user",
+            "location": "unknown",
+            "pid": 12345,
+            "ppid": 1,
+            "privilege": "User",
+            "host": "TestHost",
+            "contact": "html",
+            "created": "2025-10-31T09:59:00Z"
+        },
+        "ability_metadata": {
+            "ability_id": "12345678-1234-5678-1234-567812345678",
+            "ability_name": "check-identity",
+            "ability_description": "auto-generated"
+        },
+        "operation_metadata": {
+            "operation_name": "OPTest",
+            "operation_start": "2025-10-31T10:00:00Z",
+            "operation_adversary": "AdversaryTest"
+        },
+        "attack_metadata": {
+            "tactic": "discovery",
+            "technique_name": "System Owner/User Discovery",
+            "technique_id": "T1033"
+        },
+        "agent_reported_time": "2025-10-31T10:00:10Z"
+    },
+    {
+        "command": "uptime",
+        "plaintext_command": "uptime",
+        "delegated_timestamp": "2025-10-31T10:01:00Z",
+        "collected_timestamp": "2025-10-31T10:01:10Z",
+        "finished_timestamp": "2025-10-31T10:01:15Z",
+        "status": 0,
+        "platform": "linux",
+        "executor": "sh",
+        "pid": 12346,
+        "agent_metadata": {
+            "paw": "abc123",
+            "group": "blue",
+            "architecture": "x86_64",
+            "username": "user",
+            "location": "unknown",
+            "pid": 12346,
+            "ppid": 1,
+            "privilege": "User",
+            "host": "TestHost",
+            "contact": "html",
+            "created": "2025-10-31T09:59:00Z"
+        },
+        "ability_metadata": {
+            "ability_id": "87654321-4321-8765-4321-876543218765",
+            "ability_name": "check-uptime",
+            "ability_description": "auto-generated"
+        },
+        "operation_metadata": {
+            "operation_name": "OPTest",
+            "operation_start": "2025-10-31T10:00:00Z",
+            "operation_adversary": "AdversaryTest"
+        },
+        "attack_metadata": {
+            "tactic": "discovery",
+            "technique_name": "System Information Discovery",
+            "technique_id": "T1082"
+        },
+        "agent_reported_time": "2025-10-31T10:01:10Z"
+    }
+]

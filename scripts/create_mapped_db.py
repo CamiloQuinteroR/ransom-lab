@@ -77,7 +77,7 @@ def main():
     conn = sqlite3.connect(str(DB))
     ensure_schema(conn)
     rows = load_events(DATA)
-    # limpiar tabla events y reinsertar (simple)
+  
     cur = conn.cursor()
     cur.execute("DELETE FROM events;")
     cur.executemany("""

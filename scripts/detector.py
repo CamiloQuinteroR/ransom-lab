@@ -1,4 +1,3 @@
-
 import json, sqlite3, os
 from pathlib import Path
 
@@ -40,7 +39,7 @@ def detect_sequences(events):
     for op, ops_events in events_by_op.items():
         seq = [ev["attack_metadata"]["technique_id"] for ev in ops_events]
         unique_seq = set(seq)
-        # Detecta si al menos 3 de las 4 técnicas están presentes (únicas)
+      
         if sum(t in unique_seq for t in RANSOM_SEQUENCE) >= 3:
             host = ops_events[0]["agent_metadata"]["host"]
             alerts.append((op, host, ",".join(seq), ops_events[-1]["finished_timestamp"]))

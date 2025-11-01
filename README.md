@@ -1,5 +1,3 @@
-
-
 <div align="center">
    <h1>🛡️ POC para Uso de MITRE ATT&CK para Mapear Técnicas de Ransomware</h1>
    <p>Simulación y detección de técnicas de ransomware usando MITRE ATT&CK y Caldera</p>
@@ -101,3 +99,9 @@ https://github.com/CamiloQuinteroR/ransom-lab.git
 Estudiantes de Ingeniería de Sistemas, Escuela Colombiana de Ingeniería Julio Garavito.
 
 Este POC fue desarrollado como parte del seminario de Seguridad Informática.
+
+---
+
+## 🎥 Video Explicativo
+
+En este [video explicativo](https://youtu.be/dtboGRp4xXQ) se detalla el funcionamiento del POC, incluyendo cómo se detectan las técnicas de ransomware y cómo se visualizan los resultados en el dashboard.
