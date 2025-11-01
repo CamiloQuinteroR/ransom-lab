@@ -1,11 +1,4 @@
-dashboard/
-    app.py           # Dashboard Flask
-scripts/
-    create_mapped_db.py  # Ingesta de eventos
-    detector.py          # Detección de ataques
-    ...
-data/
-    events.json, events1.json, ... # Archivos de eventos
+
 
 <div align="center">
    <h1>🛡️ POC para Uso de MITRE ATT&CK para Mapear Técnicas de Ransomware</h1>
