@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Detalles del ataque</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <style>
+        body { background: #f8fafc; font-family: 'Roboto', Arial, sans-serif; margin: 0; padding: 0; }
+        .container { max-width: 800px; margin: 40px auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); padding: 32px 40px 24px 40px; }
+        h2 { color: #dc2626; margin-bottom: 24px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 16px; background: #f3f4f6; border-radius: 8px; overflow: hidden; }
+        th, td { padding: 10px 8px; text-align: left; }
+        th { background: #6366f1; color: #fff; font-weight: 700; }
+        tr:nth-child(even) { background: #e0e7ff; }
+        tr:hover { background: #fee2e2; }
+        .footer { text-align: center; margin-top: 32px; color: #64748b; font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
+            <img src="https://img.icons8.com/fluency/48/000000/hacker.png" alt="Hacker" style="height:48px;">
+            <h2 style="color:#0f172a;font-size:2rem;margin:0;letter-spacing:1px;">Análisis Forense de Operación: <span style="color:#dc2626">{{operation}}</span></h2>
+        </div>
+        <div style="color:#64748b;font-size:1.1rem;margin-bottom:18px;">Host comprometido: <span style="color:#6366f1;font-weight:bold;">{{host}}</span></div>
+        <table style="background:#0f172a;color:#fff;border-radius:8px;box-shadow:0 2px 8px #0f172a22;">
+            <tr style="background:#dc2626;color:#fff;"><th>Técnica</th><th>Nombre</th><th>Comando</th><th>Δ Tiempo (seg)</th></tr>
+            {% for t in techniques %}
+            {% if loop.index0 is even %}
+            <tr style="background-color: #1e293b;">
+            {% else %}
+            <tr style="background-color: #334155;">
+            {% endif %}
+                <td style="font-weight:bold;color:#fee2e2;">{{t.technique_id}}</td>
+                <td>{{t.technique_name}}</td>
+                <td style="font-family: monospace; color: #38bdf8;">{{t.command}}</td>
+                <td>{% if t.delta is not none %}{{t.delta|round(2)}}{% else %}-{% endif %}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    <h3 style="margin-top:40px;color:#0f172a;letter-spacing:1px;">Secuencia temporal de técnicas</h3>
+    <canvas id="timelineChart" height="120" style="background:#f1f5f9;border-radius:8px;"></canvas>
+
+    <h3 style="margin-top:40px;color:#0f172a;letter-spacing:1px;">Frecuencia de técnicas MITRE</h3>
+    <canvas id="freqChart" height="120" style="background:#f1f5f9;border-radius:8px;"></canvas>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+    // Secuencia temporal de técnicas
+    const timelineLabels = {{ techniques|map(attribute='technique_id')|list|tojson | safe }};
+    const timelineData = {{ techniques|map(attribute='delta')|list|tojson | safe }}.map(x => x === null ? 0 : x);
+    new Chart(document.getElementById('timelineChart').getContext('2d'), {
+        type: 'line',
+        data: {
+            labels: timelineLabels,
+            datasets: [{
+                label: 'Δ Tiempo entre técnicas (seg)',
+                data: timelineData,
+                fill: false,
+                borderColor: '#6366f1',
+                backgroundColor: '#6366f1',
+                tension: 0.2
+            }]
+        },
+        options: {
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+
+    // Frecuencia de técnicas MITRE
+    const freq = {};
+    timelineLabels.forEach(t => { freq[t] = (freq[t] || 0) + 1; });
+    const freqLabels = Object.keys(freq);
+    const freqData = Object.values(freq);
+    new Chart(document.getElementById('freqChart').getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: freqLabels,
+            datasets: [{
+                label: 'Frecuencia de técnicas',
+                data: freqData,
+                backgroundColor: '#fee2e2',
+                borderColor: '#dc2626',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+        </script>
+        <div class="footer">
+            <a href="/">&larr; Volver al dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

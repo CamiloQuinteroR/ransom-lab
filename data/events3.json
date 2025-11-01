@@ -1,0 +1,42 @@
+[
+  {
+    "command": "whoami",
+    "plaintext_command": "whoami",
+    "delegated_timestamp": "2025-10-31T10:00:00Z",
+    "collected_timestamp": "2025-10-31T10:00:10Z",
+    "finished_timestamp": "2025-10-31T10:00:20Z",
+    "status": 0,
+    "platform": "linux",
+    "executor": "sh",
+    "pid": 12345,
+    "agent_metadata": {
+      "paw": "testpaw",
+      "group": "blue",
+      "architecture": "x86_64",
+      "username": "testuser",
+      "location": "unknown",
+      "pid": 12345,
+      "ppid": 0,
+      "privilege": "User",
+      "host": "TestHost",
+      "contact": "html",
+      "created": "2025-10-31T09:59:00Z"
+    },
+    "ability_metadata": {
+      "ability_id": "simple-ability-id",
+      "ability_name": "show-username",
+      "ability_description": "Shows the current username"
+    },
+    "operation_metadata": {
+      "operation_name": "OPTest",
+      "operation_start": "2025-10-31T10:00:00Z",
+      "operation_adversary": "AdversaryTest"
+    },
+    "attack_metadata": {
+      "tactic": "discovery",
+      "technique_name": "Account Discovery",
+      "technique_id": "T1087"
+    },
+    "agent_reported_time": "2025-10-31T10:00:10Z"
+  }
+]

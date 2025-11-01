@@ -1,0 +1,17 @@
+# Ignora entornos virtuales de Python
+.venv/
+venv/
+
+
+# Archivos temporales y de sistema
+__pycache__/
+*.pyc
+*.pyo
+*.log
+
+# Archivos de configuración de usuario
+*.env
+
+# Archivos de backup
+*~
+
